@@ -1,3 +1,16 @@
-from django.shortcuts import render
+from django.views.generic import ListView
+from django.views.generic.edit import CreateView
+from django.urls import reverse_lazy
+from . import models
+from . import forms
+class ProjectListView(ListView):
+    model = models.Project
+    template_name = 'project/list.html'
 
-# Create your views here.
+class ProjectCreateView(CreateView):
+    model = models.Project
+    form_class = forms.ProjectCreateForm
+    template_name = 'project/create.html'
+    success_url = reverse_lazy('Project_List')
+
+    
