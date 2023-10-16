@@ -3,6 +3,7 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from . import views
 
 urlpatterns = [
+        
     path('', views.ProjectListView.as_view(), name='Project_List'),
     path('project/create', views.ProjectCreateView.as_view(), name='Project_create'),
     path('project/delete/<int:pk>',

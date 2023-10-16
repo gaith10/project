@@ -10,21 +10,46 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{% url 'Project_List' %}">{% trans 'Home' %}</a>
           </li>
+      
         </ul>
-        <form method="GET" action="{% url 'Project_List' %}" class="d-flex">
-          <div class="input-group">
-            <input
+        {% if user.is_authenticated %}
+           <ul class="navbar-nav mb-2 mb-lg-0 me-3">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item dropdown">
+              
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                {{ user.username }}
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">{% trans 'Profile' %}</a></li>
+                <li><hr class="dropdown-divider"></li>       
+                <li><a class="dropdown-item" href="{% url 'logout' %}">{% trans 'Logout' %}</a></li>      
+           </ul>
+           <form method="GET" action="{% url 'Project_List' %}" class="d-flex">
+            <div class="input-group">
+             <input
               type="text"
               name="q"
               class="form-control"
               placeholder="{% trans 'Search' %}"
               value="{{ request.GET.q }}"
               />
-            <button class="btn btn-outine-light" type="sumnit">
+             <button class="btn btn-outline-light" type="sumnit">
               <i class="bi bi-search"></i>
-            </button>
-          </div>
-        </form>
+             </button>
+            </div>
+           </form>
+        {% else %}
+          <a class="btn btn-outline-light" href="{% url 'login' %}">
+            {% trans 'Login' %}
+          </a>
+        {% endif %}
+        
       </div>
     </div>
   </nav>
