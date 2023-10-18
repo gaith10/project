@@ -8,12 +8,12 @@ class UserLoginForm(AuthenticationForm):
         super(UserLoginForm, self).__init__(*args, **kwargs)
 
     username = forms.CharField(
-        label='Username',
+        label='إسم المستخدم',
         widget=forms.TextInput(attrs=attrs)
 
     )
     password = forms.CharField(
-        label='Password',
+        label='كلمة المرور',
         widget=forms.PasswordInput(attrs=attrs)
 
     )
@@ -22,46 +22,46 @@ class UserLoginForm(AuthenticationForm):
 class UserRegisterForm(UserCreationForm):
 
     first_name = forms.CharField(
-        label='Firstname',
+        label='الإسم الأول',
         widget=forms.TextInput(attrs=attrs)
 
     )
 
     last_name = forms.CharField(
-        label='Last name',
+        label='لقب العائلة',
         widget=forms.TextInput(attrs=attrs)
 
     )
 
     
     username = forms.CharField(
-        label='Username',
+        label='إسم المستخدم',
         widget=forms.TextInput(attrs=attrs)
 
     )
  
     email = forms.EmailField(
-        label='Email',
+        label='البريد الإلكتروني',
         widget=forms.TextInput(attrs=attrs)
 
     )  
 
     password1 = forms.CharField(
-        label='Password',
+        label='كلمة المرور',
         strip=False,
         widget=forms.PasswordInput(attrs=attrs)
 
     )
 
     password2 = forms.CharField(
-        label='Password Confirmation',
+        label='تأكيد كلمة المرور',
         strip=False,
         widget=forms.PasswordInput(attrs=attrs)
 
     )
 
     class Meta(UserCreationForm.Meta):
-        fields = ('first_name', 'last_name', 'username', 'email')
+        fields = ('first_name', 'last_name','username', 'email')
 class ProfileForm(UserChangeForm):
     password = None
 

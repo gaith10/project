@@ -1,24 +1,24 @@
 {% load i18n %}
 <nav class="navbar navbar-expand-lg navbar-dark bg-success bg-gradient p-3">
     <div class="container-fluid">
-      <a class="navbar-brand" href="{% url 'Project_List' %}">{% trans 'Projects Management' %}</a>
+      <a class="navbar-brand" href="{% url 'Project_List' %}">{% trans 'إدارة مشاريع' %}</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{% url 'Project_List' %}">{% trans 'Home' %}</a>
+            <a class="nav-link active" aria-current="page" href="{% url 'Project_List' %}">{% trans 'الرئيسية' %}</a>
           </li>
       
         </ul>
         {% if user.is_authenticated %}
            <ul class="navbar-nav mb-2 mb-lg-0 me-3">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
+              <a class="nav-link active" aria-current="page" href="#">الرئيسية</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
+              <a class="nav-link" href="#">رابط</a>
             </li>
             <li class="nav-item dropdown">
               
@@ -26,9 +26,9 @@
                 {{ user.username }}
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="{% url 'profile' %}">{% trans 'profile' %}</a></li>
+                <li><a class="dropdown-item" href="{% url 'profile' %}">{% trans 'الملف الشخصي' %}</a></li>
                 <li><hr class="dropdown-divider"></li>       
-                <li><a class="dropdown-item" href="{% url 'logout' %}">{% trans 'Logout' %}</a></li>      
+                <li><a class="dropdown-item" href="{% url 'logout' %}">{% trans 'تسجيل الخروج' %}</a></li>      
            </ul>
            <form method="GET" action="{% url 'Project_List' %}" class="d-flex">
             <div class="input-group">
@@ -36,7 +36,7 @@
               type="text"
               name="q"
               class="form-control"
-              placeholder="{% trans 'Search' %}"
+              placeholder="{% trans 'إبحث' %}"
               value="{{ request.GET.q }}"
               />
              <button class="btn btn-outline-light" type="sumnit">
@@ -46,10 +46,10 @@
            </form>
         {% else %}
           <a class="btn btn-outline-light mx-2" href="{% url 'register' %}">
-            {% trans 'Register' %}
+            {% trans "حساب جديد" %}
           </a>
           <a class="btn btn-outline-light" href="{% url 'login' %}">
-            {% trans 'Login' %}
+            {% trans 'تسجيل دخول' %}
           </a>
         {% endif %}
         

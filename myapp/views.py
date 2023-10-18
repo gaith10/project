@@ -8,10 +8,6 @@ from django.contrib.auth.mixins import UserPassesTestMixin
 from . import models
 from . import forms
 
-
-
-
-
 class ProjectListView(LoginRequiredMixin, ListView):
     model = models.Project
     template_name = 'project/List.html'
@@ -57,8 +53,8 @@ class TaskCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     fields = ['project', 'description']
     http_method_names = ['post']
     def test_func(self):
-        project_id = self.request.POST('project', '')
-        return Project.objects.get(pk=project_id).user_id == self.request.user_id
+        project_id = self.request.POST['project']
+        return models.Project.objects.get(pk=project_id).user_id == self.request.user.id
     """def test_func(self):
         project_id = self.request.POST.get('project', '')
         return models.Project.objects.get(pk=project_id).user_id == self.request.user.id"""
@@ -94,3 +90,4 @@ class TaskUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
     def get_success_url(self):
         return reverse('Project_update', args=[self.object.project.id])
+
